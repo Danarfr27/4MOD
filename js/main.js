@@ -90,3 +90,49 @@
   });
 
 })();
+
+// ---- Login modal & access control ----
+(function(){
+  const getStarted = document.getElementById('getStarted');
+  const getStartedMain = document.getElementById('getStartedMain');
+  const loginModal = document.getElementById('loginModal');
+  const closeModal = document.getElementById('closeModal');
+  const waLink = document.getElementById('waLink');
+  const loginBackdrop = document.getElementById('loginBackdrop');
+
+  function showModal(){
+    if(!loginModal) return;
+    loginModal.setAttribute('aria-hidden', 'false');
+    loginModal.classList.add('open');
+  }
+
+  function hideModal(){
+    if(!loginModal) return;
+    loginModal.setAttribute('aria-hidden', 'true');
+    loginModal.classList.remove('open');
+  }
+
+  // Intercept clicks to chat page to require login
+  [getStarted, getStartedMain].forEach(btn => {
+    if(!btn) return;
+    btn.addEventListener('click', function(e){
+      // if logged in, allow navigation
+      if(localStorage.getItem('aivolks_logged_in')) return;
+      e.preventDefault();
+      showModal();
+    });
+  });
+
+  if(closeModal) closeModal.addEventListener('click', hideModal);
+  if(loginBackdrop) loginBackdrop.addEventListener('click', hideModal);
+
+  // When user clicks WhatsApp link, mark them as 'requested' so they can proceed
+  if(waLink) waLink.addEventListener('click', function(){
+    // Note: number is intentionally left blank. Site owner should edit the href to include number.
+    localStorage.setItem('aivolks_logged_in', 'true');
+    // allow some time for WhatsApp to open, then redirect to chat
+    setTimeout(()=> {
+      window.location.href = 'chat.html';
+    }, 500);
+  });
+})();
