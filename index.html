@@ -34,7 +34,7 @@
 
       <div class="header-actions">
         <a href="#" class="btn-login">Login</a>
-        <a href="#" class="btn-primary">Get Started</a>
+        <a href="chat.html" class="btn-primary" id="getStarted">Get Started</a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
           <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>
@@ -79,7 +79,7 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="#" class="btn-main">
+        <a href="chat.html" class="btn-main" id="getStartedMain">
           Get Started Free
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
@@ -367,5 +367,18 @@
 
   <script src="js/particles.js"></script>
   <script src="js/main.js"></script>
+  <!-- Login Modal -->
+  <div class="login-modal" id="loginModal" aria-hidden="true">
+    <div class="login-modal-backdrop" id="loginBackdrop"></div>
+    <div class="login-modal-panel" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <h3 id="loginTitle">Login required</h3>
+      <p>To access the chat, please request access by clicking the button below. This will open WhatsApp to contact the site owner.</p>
+      <div class="modal-actions">
+        <a href="https://wa.me/" class="btn-main" id="waLink">Get Started Free</a>
+        <button class="btn-outline" id="closeModal">Cancel</button>
+      </div>
+      <p class="modal-note">(WhatsApp number not set — please insert your number in the link URL later.)</p>
+    </div>
+  </div>
 </body>
 </html>
