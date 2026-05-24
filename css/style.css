@@ -3,20 +3,22 @@
    ================================================ */
 
 /* ---- Reset & Base ---- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --orange: #FF7A00;
-  --orange-light: #FF9A44;
+  --orange: #ff7a00;
+  --orange-light: #ff9a44;
   --black: #000000;
-  --card-bg: #181A20;
-  --card-inner: #24262D;
-  --success: #00D68F;
-  --error: #FF4444;
+  --card-bg: #181a20;
+  --card-inner: #24262d;
+  --success: #00d68f;
+  --error: #ff4444;
   --white: #ffffff;
   --white-5: rgba(255, 255, 255, 0.05);
   --white-10: rgba(255, 255, 255, 0.1);
@@ -42,7 +44,11 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   background-color: var(--black);
   color: var(--white);
   line-height: 1.5;
@@ -61,10 +67,20 @@ a {
 }
 
 /* ---- Scrollbar ---- */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--white-10); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--white-20); }
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--white-10);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--white-20);
+}
 
 /* ================================================
    PARTICLE BACKGROUND
@@ -212,9 +228,15 @@ a {
   height: 24px;
 }
 
-.icon-close { display: none; }
-.mobile-toggle.active .icon-menu { display: none; }
-.mobile-toggle.active .icon-close { display: block; }
+.icon-close {
+  display: none;
+}
+.mobile-toggle.active .icon-menu {
+  display: none;
+}
+.mobile-toggle.active .icon-close {
+  display: block;
+}
 
 /* ---- Mobile Menu ---- */
 .mobile-menu {
@@ -271,7 +293,12 @@ a {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255, 122, 0, 0.1), transparent, transparent);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 122, 0, 0.1),
+    transparent,
+    transparent
+  );
   pointer-events: none;
 }
 
@@ -500,9 +527,15 @@ a {
   border-radius: 50%;
 }
 
-.dot.red { background: var(--error); }
-.dot.yellow { background: #FBBF24; }
-.dot.green { background: var(--success); }
+.dot.red {
+  background: var(--error);
+}
+.dot.yellow {
+  background: #fbbf24;
+}
+.dot.green {
+  background: var(--success);
+}
 
 .window-bar {
   flex: 1;
@@ -538,8 +571,12 @@ a {
   display: flex;
 }
 
-.msg.user { justify-content: flex-end; }
-.msg.bot { justify-content: flex-start; }
+.msg.user {
+  justify-content: flex-end;
+}
+.msg.bot {
+  justify-content: flex-start;
+}
 
 .msg-bubble {
   padding: 0.75rem 1rem;
@@ -581,7 +618,7 @@ a {
 }
 
 .feature-card {
-  background: linear-gradient(135deg, #1C1F26, var(--card-inner));
+  background: linear-gradient(135deg, #1c1f26, var(--card-inner));
   border: 1px solid var(--white-10);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
@@ -629,7 +666,7 @@ a {
 }
 
 .model-card {
-  background: linear-gradient(135deg, #1C1F26, var(--card-inner));
+  background: linear-gradient(135deg, #1c1f26, var(--card-inner));
   border: 1px solid var(--white-10);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
@@ -689,12 +726,12 @@ a {
 
 .badge-blue {
   background: rgba(96, 165, 250, 0.15);
-  color: #60A5FA;
+  color: #60a5fa;
 }
 
 .badge-purple {
   background: rgba(167, 139, 250, 0.15);
-  color: #A78BFA;
+  color: #a78bfa;
 }
 
 /* ================================================
@@ -795,7 +832,9 @@ a {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .reveal.visible {
@@ -803,10 +842,79 @@ a {
   transform: translateY(0);
 }
 
-.reveal.delay-1 { transition-delay: 0.1s; }
-.reveal.delay-2 { transition-delay: 0.2s; }
-.reveal.delay-3 { transition-delay: 0.3s; }
-.reveal.delay-4 { transition-delay: 0.4s; }
+/* ---- Login Modal ---- */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.login-modal.open {
+  display: flex;
+}
+.login-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.login-modal-panel {
+  position: relative;
+  z-index: 101;
+  width: 90%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #0f1113, #121316);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: var(--white);
+}
+.login-modal-panel h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+.login-modal-panel p {
+  color: var(--white-50);
+  margin-bottom: 1rem;
+}
+.modal-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.modal-note {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--white-30);
+}
+
+/* ---- Chat page tweaks ---- */
+.chat-window {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.chat-messages {
+  max-height: 420px;
+  overflow: auto;
+  padding: 1rem;
+}
+.msg {
+  margin-bottom: 0.5rem;
+}
+
+.reveal.delay-1 {
+  transition-delay: 0.1s;
+}
+.reveal.delay-2 {
+  transition-delay: 0.2s;
+}
+.reveal.delay-3 {
+  transition-delay: 0.3s;
+}
+.reveal.delay-4 {
+  transition-delay: 0.4s;
+}
 
 /* ================================================
    KEYFRAMES
@@ -823,8 +931,13 @@ a {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 /* ================================================
