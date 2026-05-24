@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIVOLKS - Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">AIVOLKS</a>
+      <div class="header-actions">
+        <a href="#" class="btn-primary" id="logoutBtn">Logout</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section" style="padding-top:100px;">
+    <div class="container">
+      <div class="chat-window" id="chatApp">
+        <div class="chat-header">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="window-bar">Chat with Bot</div>
+        </div>
+        <div class="chat-body">
+          <div class="chat-messages" id="messages"></div>
+        </div>
+        <div style="padding:1rem; border-top:1px solid rgba(255,255,255,0.05);">
+          <form id="chatForm">
+            <input type="text" id="chatInput" placeholder="Type a message..." style="width:80%; padding:.75rem; border-radius:8px; border:1px solid rgba(255,255,255,0.05); background:transparent; color:var(--white);" />
+            <button class="btn-main" style="margin-left:8px;">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      // Simple chat simulation
+      const messages = document.getElementById('messages');
+      const chatForm = document.getElementById('chatForm');
+      const chatInput = document.getElementById('chatInput');
+
+      function appendMessage(text, cls){
+        const el = document.createElement('div');
+        el.className = 'msg ' + cls;
+        const bubble = document.createElement('div');
+        bubble.className = 'msg-bubble ' + (cls === 'user' ? 'user-bubble' : 'bot-bubble');
+        bubble.textContent = text;
+        el.appendChild(bubble);
+        messages.appendChild(el);
+        messages.scrollTop = messages.scrollHeight;
+      }
+
+      chatForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if(!text) return;
+        appendMessage(text, 'user');
+        chatInput.value = '';
+        setTimeout(()=> appendMessage('This is a bot reply (demo).', 'bot'), 700);
+      });
+
+      document.getElementById('logoutBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        localStorage.removeItem('aivolks_logged_in');
+        window.location.href = 'index.html';
+      });
+
+      // Redirect to index if not logged in
+      if(!localStorage.getItem('aivolks_logged_in')){
+        window.location.href = 'index.html';
+      }
+    })();
+  </script>
+</body>
+</html>
